@@ -1,0 +1,5373 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-us" >
+    <head>
+        <title>Learn Apache Spark from Scratch | Udemy</title>
+
+        
+            
+
+
+<meta name="description" content="Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark">
+
+<meta name="google-play-app" content="app-id=com.udemy.android"> <meta name="twitter:card" content="summary"> <meta name="apple-itunes-app" content="app-id=562413829, affiliate-data=ct=Safari_SmartBanner&amp;amp;pt=1240482"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <meta name="medium" content="mult"> <meta name="title" content="Learn Apache Spark from Scratch - Udemy">
+<meta property="fb:app_id" content="313137469260"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta http-equiv="Content-Language" content="en-us"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta property="udemy_com:available" content="1"> <meta property="udemy_com:category" content="Development"> <meta property="udemy_com:instructor" content="https://www.udemy.com/user/eduonix/"> <meta property="udemy_com:price" content="C$35">
+
+<meta property="og:title" content="Learn Apache Spark from Scratch - Udemy">
+<meta property="og:url" content="https://www.udemy.com/learn-apache-spark-from-scratch/">
+<meta property="og:description" content="Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark">
+<meta property="og:image" content="https://udemy-images.udemy.com/course/480x270/475806_33bb_3.jpg">
+<meta property="og:type" content="udemy_com:course">
+<meta property="og:site_name" content="Udemy">
+<meta property="og:locale" content="en_US">
+
+
+<meta name="twitter:title" content="Learn Apache Spark from Scratch - Udemy">
+<meta name="twitter:url" content="https://www.udemy.com/learn-apache-spark-from-scratch/">
+<meta name="twitter:description" content="Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark">
+<meta name="twitter:image" content="https://udemy-images.udemy.com/course/480x270/475806_33bb_3.jpg">
+<meta name="twitter:site" content="@udemy">
+
+
+<meta itemprop="name" content="Learn Apache Spark from Scratch - Udemy">
+<meta itemprop="url" content="https://www.udemy.com/learn-apache-spark-from-scratch/">
+<meta itemprop="description" content="Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark">
+<meta itemprop="image" content="https://udemy-images.udemy.com/course/480x270/475806_33bb_3.jpg">
+
+
+
+        
+
+        
+            <link type="text/css" href="/staticx/udemy/js/webpack/entry-main.0dc1070ce771c2959313ccb8da161a49.css" rel="stylesheet" />
+        
+
+        
+            
+            <link type="text/css" href="/staticx/udemy/js/webpack/icomoon.1a60ec4088990e1c79e0dc8d7ee1aef0.css" rel="stylesheet" />
+
+            
+            <link rel="preconnect" href="//udemy-images.udemy.com"/>
+            
+            <link rel="dns-prefetch" href="//udemy-images.udemy.com"/>
+            
+        
+
+        
+            <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/favicon.ico" type="image/x-icon">
+            <link rel="apple-touch-icon-precomposed" size ="114x114"
+                  href="https://www.udemy.com/staticx/udemy/images/apple-touch-icon-114x114-precomposed.png"/>
+            <link rel="apple-touch-icon-precomposed" size ="57x57"
+                  href="https://www.udemy.com/staticx/udemy/images/apple-touch-icon-57x57-precomposed.png"/>
+            <link rel="apple-touch-icon-precomposed" href="https://www.udemy.com/staticx/udemy/images/apple-touch-icon-precomposed.png"/>
+            <link rel="apple-touch-icon" href="https://www.udemy.com/staticx/udemy/images/apple-touch-icon.png"/>
+        
+
+        
+            <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,latin-ext'
+                  rel='stylesheet' type='text/css'>
+        
+
+        
+            <style>
+    .org-logo {
+        background-image: url('https://www.udemy.com/staticx/udemy/images/v5/logo-green.svg');
+    }
+
+    @media (min-resolution: 2dppx),
+    (min-resolution: 192dpi),
+    (-webkit-min-device-pixel-ratio: 2) {
+        @-ms-viewport { width:device-width; zoom:1.0; }
+        .org-logo {
+            /*retina display*/
+            background-image: url('https://www.udemy.com/staticx/udemy/images/v5/logo-green.svg');
+        }
+    }
+
+    
+</style>
+
+        
+
+        
+    <link type="text/css" href="/staticx/udemy/js/webpack/course-landing-page/desktop/hb.2b0a2558261cb7fe886e1e28b777b0df.css" rel="stylesheet" />
+
+
+        <script type="text/javascript">
+    (function () {
+        var head,
+            regExp = "",
+            version = -1,
+            userAgent = navigator.userAgent;
+
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            regExp = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        } else if (navigator.appName == 'Netscape') {
+            regExp = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+        }
+        if (regExp && regExp.exec(userAgent) != null) {
+            version = parseFloat(RegExp.$1);
+        }
+
+        if (version > 9) {
+            head = document.getElementsByTagName("html")[0];
+            head.className = head.className + " ie";
+            if (version == 10) {
+                head.className = head.className + " ie10";
+            }
+        }
+    })();
+</script>
+
+
+        <script type="text/javascript">
+    // Polyfill for IE in order to fix errors related with new Event() and new CustomEvent()
+    // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
+    (function () {
+      if ( typeof window.CustomEvent === "function" ) return false;
+      function CustomEvent ( event, params ) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent( 'CustomEvent' );
+        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+        return evt;
+       }
+      CustomEvent.prototype = window.Event.prototype;
+      window.CustomEvent = CustomEvent;
+      window.Event = CustomEvent;
+    })();
+</script>
+
+
+<script>
+    var UD = UD || {};
+    UD.me = {"qualaroo_survey_ids":[]};
+    UD.Config = {"is_django":true,"currency_symbol":"C$","version":"5e279d45b16272864e570be67dc1cc68a5ac6fdd","app_name":"course_landing_page","url":{"to_js":"https://www.udemy.com/staticx/udemy/js/","to_root":"https://www.udemy.com/","to_page_events":"https://page-events-ustats.udemy.com/","to_app":"https://www.udemy.com/","to_images":"https://www.udemy.com/staticx/udemy/images/"},"brand":{"has_organization":false,"is_feed_commenting_enabled":true,"is_teaching_enabled":true,"is_import_courses_enabled":true,"is_sso_enabled":false,"is_ufb_celery_report_enabled":true,"is_udemy":true,"_class":"brand","is_student_list_at_course_taking_enabled":true,"is_messaging_enabled":true,"identifier":"udemy","is_team":false,"is_ufb_new_course_discovery_enabled":false,"is_intercom_enabled":true,"is_add_reviews_enabled":true,"is_discussions_enabled":true,"is_external_sources_enabled":true,"is_social_sharing_enabled":true},"features":{"report_abuse":true,"shopping_cart":true,"gift_course":true,"hello_bar":{"pricing":true,"verify_email":false,"promotion":true,"email_opt_in_disable":false,"instructor":false,"invalid_email":false,"email_opt_in":true,"terms":true},"bundle":{"instructor_bio":{"social_links":true}},"course":{"announcements":{"comments":{"view":true}},"discussions":{"view":true},"is_early_access":false,"refundable":true,"students":{"unenroll":false}},"course_landing_page":{"instructor_bio":{"social_links":true},"incentives":{"money_back_guarantee":true,"lifetime_access":true}},"wishlist":true,"enabled_modules":["ud.adroll"],"home":{"my_courses":{"revenue":true,"free_label":true,"privacy":true}}},"env":"PROD","marketplace_country":{"_class":"country","iso_code":"CAN","id":"CA","currency":"cad","title":"Canada"},"third_party":{"sift_science_account":false,"raven_dsn":"https://369c830fbf534485a068ab919d71b80d@app.getsentry.com/38617","zendesk":{"refund_form_id":406368},"intercom":{"app_id":"sehj53dd"},"facebook_app_id":"313137469260","stripe_publishable_key":"pk_live_xOuIgZiF7hb3wSwFSAOz3dRm","user_stripe_publishable_key":"pk_live_xOuIgZiF7hb3wSwFSAOz3dRm","filestack":{"file_extensions":[".gif",".jpg",".jpeg",".png",".rar",".zip",".pdf"],"audio_extensions":[".mp3",".wav"],"video_extensions":[".avi",".mpg",".mpeg",".flv",".mov",".m2v",".m4v",".mp4",".rm",".ram",".vob",".ogv",".webm",".wmv"],"key":"A0EHlHYkEQbCTpDvxEwAYz"},"uft_stripe_publishable_key":"pk_live_dCyHJcZsk8NaNwx1PiRSpqqq","google_analytics_id":"UA-12366301-1","pusher":{"coding_exercise_event":"coding-exercise-evaluated","key":"825910825f8199bd5b21"},"branch_metrics":{"ios_download_url":"http://ude.my/ios","android_download_url":"http://ude.my/android","ios_ufb_download_url":"http://ude.my/ios-ufb","android_ufb_download_url":"http://ude.my/android-ufb"},"google_analytics_id_for_course_taking":"UA-12366301-45","google_tag_manager_id":"GTM-7BF3X"}};
+    UD.visiting = {"visit":{"_class":"visit","id":2256193778},"visitor_uuid":"ec54cb058c4648dc9819a775917aa882","visitor":{"_class":"visitor","id":1529199906}};
+</script>
+
+
+
+<script>
+    UD.request = {
+        locale: 'en_US',
+        helloBarId: '4534',
+        contentContext: {},
+        priceRange: {
+            lowest: '',
+            highest: ''
+        },
+        daysUntilRevisitRelease: '',
+        studentLearnMoreLink: '',
+        instructorLearnMoreLink: '',
+        pricingFAQLink: '',
+        pricingRepublishLink: '',
+        serverTimestamp: '2017-02-27T04:41:42.711701+00:00',
+        clientTimestamp: new Date().toISOString(),
+        
+        experiment: {"fwk":{"values":{},"ids":{"584":null}}},
+        termsVersion: '',
+        termsLearnMoreLink: '',
+        republishSupportLink: ''
+    };
+</script>
+
+<script>
+    window.GoogleAnalyticsObject = 'ga';
+    window.ga = function () {
+        (window.ga.q = window.ga.q || []).push(arguments);
+    };
+    window.ga.l = 1 * new Date();
+
+    UD.GoogleAnalytics = UD.GoogleAnalytics || {};
+    UD.GoogleAnalytics.createAccount = function (accountId, propertyName, domainName) {
+        if (accountId) {
+            if (propertyName) {
+                // Required for multiple trackers
+                window.ga('create', accountId, 'auto', {'name': propertyName, 'cookieDomain': domainName || 'none', 'siteSpeedSampleRate': 10});
+            } else {
+                window.ga('create', accountId, 'auto', {'siteSpeedSampleRate': 10});
+                window.ga('require', 'displayfeatures'); // Enables retargeting
+            }
+        }
+    };
+    UD.GoogleAnalytics.trackEvent = function (category, action, label, value, propertyName,
+                                              extraParams) {
+        if (category && action) {
+            var params = [];
+            if (propertyName) {
+                params.push(propertyName.concat('.send'));
+            } else {
+                params.push('send');
+            }
+            params.push('event');
+            params.push(category, action);
+            if (label) {
+                params.push(label);
+            }
+            if (value) {
+                params.push(parseInt(value, 10) || 0);
+            }
+            extraParams = extraParams || {};
+            if (!extraParams.nonInteraction) {
+                extraParams.nonInteraction = 0;
+            }
+            params.push(extraParams);
+            window.ga.apply(window, params);
+        }
+    };
+    UD.GoogleAnalytics.createAccount(UD.Config.third_party.google_analytics_id);
+</script>
+
+<script>
+    if (window.performance && typeof window.performance.mark === 'function'
+            && typeof window.performance.measure === 'function') {
+        UD.performance = {
+            mark: function (name) {
+                window.performance.mark(name);
+            },
+            start: function (name) {
+                window.performance.mark('_' + name + '-start');
+            },
+            end: function (name) {
+                var endMark = '_' + name + '-end';
+                var startMark = '_' + name + '-start';
+                window.performance.mark(endMark);
+                window.performance.measure(name,  startMark, endMark);
+            },
+            sync: function() {
+                
+                window.dispatchEvent(new Event('syncPerf'));
+            }
+        };
+    } else {
+        UD.performance = {
+            mark: Function.prototype,
+            start: Function.prototype,
+            end: Function.prototype,
+            sync: Function.prototype
+        };
+    }
+</script>
+
+<script>
+   (function activateMyQualaroos(surveyIds) {
+        window._kiq = window._kiq || [];
+        var i, property;
+        for (i = 0; i < surveyIds.length; i++) {
+            property = {};
+            property[surveyIds[i]] = true;
+            window._kiq.push(['set', property]);
+        }
+    })(UD.me.qualaroo_survey_ids);
+</script>
+
+
+
+
+    <script src="https://www.udemy.com/staticx/udemy/js/jsi18n/en-us.js?v=5e279d45b16272864e570be67dc1cc68a5ac6fdd"></script>
+
+
+
+
+        
+
+
+
+
+        
+    <base href="/learn-apache-spark-from-scratch/">
+    <link rel="canonical" href="https://www.udemy.com/learn-apache-spark-from-scratch/">
+
+    </head>
+    <body id="udemy"
+          class="
+    landing-page ud-angular-loader
+  udemy "
+            
+    
+    data-clp-course-id="475806"
+    data-hotjar-page="clp"
+    data-hotjar-device="desktop"
+
+    data-hotjar-bw="hb"
+    data-module-id="course-landing-page"
+    data-module-name="ng/apps/course-landing-page/app"
+>
+
+        
+
+        
+
+        
+            
+                
+
+
+<div class="c_header c_header--desktop ud-angular-loader js-hellobar  "
+     data-module-id="header"
+     data-module-name="ng/apps/header/app"
+     compile-hellobar-modal>
+
+    
+
+    
+
+    
+
+
+
+
+    <div class="c_header__inner">
+        
+            <div class="c_header__logo-container">
+    
+        
+
+<a class="c_header__logo-wrap" href="/courses/"
+   header-tracking="logo">
+    <img class="udemy-logo" src="https://www.udemy.com/staticx/udemy/images/v5/logo-green.svg" alt="udemy" width="100" data-purpose="udemy-brand-logo"/>
+</a>
+
+    
+</div>
+
+        
+
+        
+            <div class="c_header__left">
+                <button nav-button
+                        class="c_header__mobile-bt mobile-bt--overflow udi udi-menu"
+                        header-tracking="mobile-nav.main"
+                        ng-click="setMainNavCss('nav-open', 'overlay--mobile-show')"
+                        data-purpose="side-menu-opener"></button>
+                
+                    
+
+
+
+    <div id="dropdownButton" class="dropdown dropdown--topics">
+
+        <div class="dropdown__toggle" aria-expanded="false">
+    <span class="dropdown__main-link" click-on-mobile
+       header-tracking="topics.main" data-purpose="browse-courses-link">
+        Browse
+        <span class="caret"></span>
+    </span>
+</div>
+
+
+        <div class="dropdown__menu">
+            
+
+<ul class="dropdown__menu-list">
+    
+
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Development" data-purpose="ver-Development">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/development/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="288">
+        <b class="menu__icon udi udi-development"></b>
+        <span class="menu__title"> Development </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin6" id="submenu-Development">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/development/"
+                       header-tracking="topics.category" tracking-detail="288">
+                        <span class="menu__main-title">
+                            
+                            All Development
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/development/web-development/"
+       header-tracking="topics.subcategory" tracking-detail="8">
+        <b class="menu__icon udi udi-web-development"></b>
+        <span class="menu__title">Web Development</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/mobile-apps/"
+       header-tracking="topics.subcategory" tracking-detail="10">
+        <b class="menu__icon udi udi-mobile-apps"></b>
+        <span class="menu__title">Mobile Apps</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/programming-languages/"
+       header-tracking="topics.subcategory" tracking-detail="12">
+        <b class="menu__icon udi udi-programming-languages"></b>
+        <span class="menu__title">Programming Languages</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/game-development/"
+       header-tracking="topics.subcategory" tracking-detail="14">
+        <b class="menu__icon udi udi-game-development"></b>
+        <span class="menu__title">Game Development</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/databases/"
+       header-tracking="topics.subcategory" tracking-detail="16">
+        <b class="menu__icon udi udi-databases"></b>
+        <span class="menu__title">Databases</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/software-testing/"
+       header-tracking="topics.subcategory" tracking-detail="18">
+        <b class="menu__icon udi udi-software-testing"></b>
+        <span class="menu__title">Software Testing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/software-engineering/"
+       header-tracking="topics.subcategory" tracking-detail="20">
+        <b class="menu__icon udi udi-software-engineering"></b>
+        <span class="menu__title">Software Engineering</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/development-tools/"
+       header-tracking="topics.subcategory" tracking-detail="362">
+        <b class="menu__icon udi udi-development-tools"></b>
+        <span class="menu__title">Development Tools</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/development/e-commerce/"
+       header-tracking="topics.subcategory" tracking-detail="354">
+        <b class="menu__icon udi udi-e-commerce"></b>
+        <span class="menu__title">E-Commerce</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Business" data-purpose="ver-Business">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/business/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="268">
+        <b class="menu__icon udi udi-business"></b>
+        <span class="menu__title"> Business </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin5" id="submenu-Business">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/business/"
+                       header-tracking="topics.category" tracking-detail="268">
+                        <span class="menu__main-title">
+                            
+                            All Business
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/business/finance/"
+       header-tracking="topics.subcategory" tracking-detail="24">
+        <b class="menu__icon udi udi-finance"></b>
+        <span class="menu__title">Finance</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/entrepreneurship/"
+       header-tracking="topics.subcategory" tracking-detail="26">
+        <b class="menu__icon udi udi-entrepreneurship"></b>
+        <span class="menu__title">Entrepreneurship</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/communications/"
+       header-tracking="topics.subcategory" tracking-detail="28">
+        <b class="menu__icon udi udi-communications"></b>
+        <span class="menu__title">Communications</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/management/"
+       header-tracking="topics.subcategory" tracking-detail="30">
+        <b class="menu__icon udi udi-management"></b>
+        <span class="menu__title">Management</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/sales/"
+       header-tracking="topics.subcategory" tracking-detail="32">
+        <b class="menu__icon udi udi-sales"></b>
+        <span class="menu__title">Sales</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/strategy/"
+       header-tracking="topics.subcategory" tracking-detail="34">
+        <b class="menu__icon udi udi-strategy"></b>
+        <span class="menu__title">Strategy</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/operations/"
+       header-tracking="topics.subcategory" tracking-detail="36">
+        <b class="menu__icon udi udi-operations"></b>
+        <span class="menu__title">Operations</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/project-management/"
+       header-tracking="topics.subcategory" tracking-detail="38">
+        <b class="menu__icon udi udi-project-management"></b>
+        <span class="menu__title">Project Management</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/business-law/"
+       header-tracking="topics.subcategory" tracking-detail="40">
+        <b class="menu__icon udi udi-business-law"></b>
+        <span class="menu__title">Business Law</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/data-and-analytics/"
+       header-tracking="topics.subcategory" tracking-detail="44">
+        <b class="menu__icon udi udi-data-and-analytics"></b>
+        <span class="menu__title">Data &amp; Analytics</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/home-business/"
+       header-tracking="topics.subcategory" tracking-detail="46">
+        <b class="menu__icon udi udi-home-business"></b>
+        <span class="menu__title">Home Business</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/human-resources/"
+       header-tracking="topics.subcategory" tracking-detail="48">
+        <b class="menu__icon udi udi-human-resources"></b>
+        <span class="menu__title">Human Resources</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/industry/"
+       header-tracking="topics.subcategory" tracking-detail="50">
+        <b class="menu__icon udi udi-industry"></b>
+        <span class="menu__title">Industry</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/media/"
+       header-tracking="topics.subcategory" tracking-detail="52">
+        <b class="menu__icon udi udi-media"></b>
+        <span class="menu__title">Media</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/real-estate/"
+       header-tracking="topics.subcategory" tracking-detail="58">
+        <b class="menu__icon udi udi-real-estate"></b>
+        <span class="menu__title">Real Estate</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/business/other/"
+       header-tracking="topics.subcategory" tracking-detail="60">
+        <b class="menu__icon udi udi-business"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-IT-and-Software" data-purpose="ver-IT-and-Software">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/it-and-software/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="294">
+        <b class="menu__icon udi udi-it-and-software"></b>
+        <span class="menu__title"> IT &amp; Software </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin6" id="submenu-IT-and-Software">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/it-and-software/"
+                       header-tracking="topics.category" tracking-detail="294">
+                        <span class="menu__main-title">
+                            
+                            All IT &amp; Software
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/it-and-software/it-certification/"
+       header-tracking="topics.subcategory" tracking-detail="132">
+        <b class="menu__icon udi udi-it-certification"></b>
+        <span class="menu__title">IT Certification</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/it-and-software/network-and-security/"
+       header-tracking="topics.subcategory" tracking-detail="134">
+        <b class="menu__icon udi udi-network-and-security"></b>
+        <span class="menu__title">Network &amp; Security</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/it-and-software/hardware/"
+       header-tracking="topics.subcategory" tracking-detail="136">
+        <b class="menu__icon udi udi-hardware"></b>
+        <span class="menu__title">Hardware</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/it-and-software/operating-systems/"
+       header-tracking="topics.subcategory" tracking-detail="138">
+        <b class="menu__icon udi udi-operating-systems"></b>
+        <span class="menu__title">Operating Systems</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/it-and-software/other/"
+       header-tracking="topics.subcategory" tracking-detail="140">
+        <b class="menu__icon udi udi-it-and-software"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Office-Productivity" data-purpose="ver-Office-Productivity">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/office-productivity/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="292">
+        <b class="menu__icon udi udi-office-productivity"></b>
+        <span class="menu__title"> Office Productivity </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin5" id="submenu-Office-Productivity">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/office-productivity/"
+                       header-tracking="topics.category" tracking-detail="292">
+                        <span class="menu__main-title">
+                            
+                            All Office Productivity
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/microsoft/"
+       header-tracking="topics.subcategory" tracking-detail="96">
+        <b class="menu__icon udi udi-microsoft"></b>
+        <span class="menu__title">Microsoft</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/apple/"
+       header-tracking="topics.subcategory" tracking-detail="98">
+        <b class="menu__icon udi udi-apple"></b>
+        <span class="menu__title">Apple</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/google/"
+       header-tracking="topics.subcategory" tracking-detail="100">
+        <b class="menu__icon udi udi-google"></b>
+        <span class="menu__title">Google</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/sap/"
+       header-tracking="topics.subcategory" tracking-detail="102">
+        <b class="menu__icon udi udi-sap"></b>
+        <span class="menu__title">SAP</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/intuit/"
+       header-tracking="topics.subcategory" tracking-detail="104">
+        <b class="menu__icon udi udi-intuit"></b>
+        <span class="menu__title">Intuit</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/salesforce/"
+       header-tracking="topics.subcategory" tracking-detail="358">
+        <b class="menu__icon udi udi-salesforce"></b>
+        <span class="menu__title">Salesforce</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/oracle/"
+       header-tracking="topics.subcategory" tracking-detail="106">
+        <b class="menu__icon udi udi-oracle"></b>
+        <span class="menu__title">Oracle</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/office-productivity/other/"
+       header-tracking="topics.subcategory" tracking-detail="108">
+        <b class="menu__icon udi udi-office-productivity"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Personal-Development" data-purpose="ver-Personal-Development">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/personal-development/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="296">
+        <b class="menu__icon udi udi-personal-development"></b>
+        <span class="menu__title"> Personal Development </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin2" id="submenu-Personal-Development">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/personal-development/"
+                       header-tracking="topics.category" tracking-detail="296">
+                        <span class="menu__main-title">
+                            
+                            All Personal Development
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/personal-transformation/"
+       header-tracking="topics.subcategory" tracking-detail="142">
+        <b class="menu__icon udi udi-personal-transformation"></b>
+        <span class="menu__title">Personal Transformation</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/productivity/"
+       header-tracking="topics.subcategory" tracking-detail="144">
+        <b class="menu__icon udi udi-productivity"></b>
+        <span class="menu__title">Productivity</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/leadership/"
+       header-tracking="topics.subcategory" tracking-detail="146">
+        <b class="menu__icon udi udi-leadership"></b>
+        <span class="menu__title">Leadership</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/personal-finance/"
+       header-tracking="topics.subcategory" tracking-detail="148">
+        <b class="menu__icon udi udi-personal-finance"></b>
+        <span class="menu__title">Personal Finance</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/career-development/"
+       header-tracking="topics.subcategory" tracking-detail="150">
+        <b class="menu__icon udi udi-career-development"></b>
+        <span class="menu__title">Career Development</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/parenting-and-relationships/"
+       header-tracking="topics.subcategory" tracking-detail="152">
+        <b class="menu__icon udi udi-parenting-and-relationships"></b>
+        <span class="menu__title">Parenting &amp; Relationships</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/happiness/"
+       header-tracking="topics.subcategory" tracking-detail="156">
+        <b class="menu__icon udi udi-happiness"></b>
+        <span class="menu__title">Happiness</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/religion-and-spirituality/"
+       header-tracking="topics.subcategory" tracking-detail="158">
+        <b class="menu__icon udi udi-religion-and-spirituality"></b>
+        <span class="menu__title">Religion &amp; Spirituality</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/personal-brand-building/"
+       header-tracking="topics.subcategory" tracking-detail="160">
+        <b class="menu__icon udi udi-personal-brand-building"></b>
+        <span class="menu__title">Personal Brand Building</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/creativity/"
+       header-tracking="topics.subcategory" tracking-detail="164">
+        <b class="menu__icon udi udi-creativity"></b>
+        <span class="menu__title">Creativity</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/influence/"
+       header-tracking="topics.subcategory" tracking-detail="166">
+        <b class="menu__icon udi udi-influence"></b>
+        <span class="menu__title">Influence</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/self-esteem/"
+       header-tracking="topics.subcategory" tracking-detail="168">
+        <b class="menu__icon udi udi-self-esteem"></b>
+        <span class="menu__title">Self Esteem</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/stress-management/"
+       header-tracking="topics.subcategory" tracking-detail="170">
+        <b class="menu__icon udi udi-stress-management"></b>
+        <span class="menu__title">Stress Management</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/memory/"
+       header-tracking="topics.subcategory" tracking-detail="172">
+        <b class="menu__icon udi udi-memory"></b>
+        <span class="menu__title">Memory &amp; Study Skills</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/motivation/"
+       header-tracking="topics.subcategory" tracking-detail="176">
+        <b class="menu__icon udi udi-motivation"></b>
+        <span class="menu__title">Motivation</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/personal-development/other/"
+       header-tracking="topics.subcategory" tracking-detail="178">
+        <b class="menu__icon udi udi-personal-development"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Design" data-purpose="ver-Design">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/design/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="269">
+        <b class="menu__icon udi udi-design"></b>
+        <span class="menu__title"> Design </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin3" id="submenu-Design">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/design/"
+                       header-tracking="topics.category" tracking-detail="269">
+                        <span class="menu__main-title">
+                            
+                            All Design
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/design/web-design/"
+       header-tracking="topics.subcategory" tracking-detail="6">
+        <b class="menu__icon udi udi-web-design"></b>
+        <span class="menu__title">Web Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/graphic-design/"
+       header-tracking="topics.subcategory" tracking-detail="110">
+        <b class="menu__icon udi udi-graphic-design"></b>
+        <span class="menu__title">Graphic Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/design-tools/"
+       header-tracking="topics.subcategory" tracking-detail="112">
+        <b class="menu__icon udi udi-design-tools"></b>
+        <span class="menu__title">Design Tools</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/user-experience/"
+       header-tracking="topics.subcategory" tracking-detail="114">
+        <b class="menu__icon udi udi-user-experience"></b>
+        <span class="menu__title">User Experience</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/game-design/"
+       header-tracking="topics.subcategory" tracking-detail="116">
+        <b class="menu__icon udi udi-game-design"></b>
+        <span class="menu__title">Game Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/design-thinking/"
+       header-tracking="topics.subcategory" tracking-detail="118">
+        <b class="menu__icon udi udi-design-thinking"></b>
+        <span class="menu__title">Design Thinking</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/3d-and-animation/"
+       header-tracking="topics.subcategory" tracking-detail="120">
+        <b class="menu__icon udi udi-3d-and-animation"></b>
+        <span class="menu__title">3D &amp; Animation</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/fashion/"
+       header-tracking="topics.subcategory" tracking-detail="122">
+        <b class="menu__icon udi udi-fashion"></b>
+        <span class="menu__title">Fashion</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/architectural-design/"
+       header-tracking="topics.subcategory" tracking-detail="124">
+        <b class="menu__icon udi udi-architectural-design"></b>
+        <span class="menu__title">Architectural Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/interior-design/"
+       header-tracking="topics.subcategory" tracking-detail="128">
+        <b class="menu__icon udi udi-interior-design"></b>
+        <span class="menu__title">Interior Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/design/other/"
+       header-tracking="topics.subcategory" tracking-detail="130">
+        <b class="menu__icon udi udi-design"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Marketing" data-purpose="ver-Marketing">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/marketing/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="290">
+        <b class="menu__icon udi udi-marketing"></b>
+        <span class="menu__title"> Marketing </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin5" id="submenu-Marketing">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/marketing/"
+                       header-tracking="topics.category" tracking-detail="290">
+                        <span class="menu__main-title">
+                            
+                            All Marketing
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/digital-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="62">
+        <b class="menu__icon udi udi-digital-marketing"></b>
+        <span class="menu__title">Digital Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/search-engine-optimization/"
+       header-tracking="topics.subcategory" tracking-detail="64">
+        <b class="menu__icon udi udi-search-engine-optimization"></b>
+        <span class="menu__title">Search Engine Optimization</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/social-media-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="66">
+        <b class="menu__icon udi udi-social-media-marketing"></b>
+        <span class="menu__title">Social Media Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/branding/"
+       header-tracking="topics.subcategory" tracking-detail="68">
+        <b class="menu__icon udi udi-branding"></b>
+        <span class="menu__title">Branding</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/marketing-fundamentals/"
+       header-tracking="topics.subcategory" tracking-detail="70">
+        <b class="menu__icon udi udi-marketing-fundamentals"></b>
+        <span class="menu__title">Marketing Fundamentals</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/analytics-and-automation/"
+       header-tracking="topics.subcategory" tracking-detail="72">
+        <b class="menu__icon udi udi-analytics-and-automation"></b>
+        <span class="menu__title">Analytics &amp; Automation</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/public-relations/"
+       header-tracking="topics.subcategory" tracking-detail="74">
+        <b class="menu__icon udi udi-public-relations"></b>
+        <span class="menu__title">Public Relations</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/advertising/"
+       header-tracking="topics.subcategory" tracking-detail="76">
+        <b class="menu__icon udi udi-advertising"></b>
+        <span class="menu__title">Advertising</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/video-and-mobile-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="78">
+        <b class="menu__icon udi udi-video-and-mobile-marketing"></b>
+        <span class="menu__title">Video &amp; Mobile Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/content-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="80">
+        <b class="menu__icon udi udi-content-marketing"></b>
+        <span class="menu__title">Content Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/non-digital-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="84">
+        <b class="menu__icon udi udi-non-digital-marketing"></b>
+        <span class="menu__title">Non-Digital Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/growth-hacking/"
+       header-tracking="topics.subcategory" tracking-detail="86">
+        <b class="menu__icon udi udi-growth-hacking"></b>
+        <span class="menu__title">Growth Hacking</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/affiliate-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="88">
+        <b class="menu__icon udi udi-affiliate-marketing"></b>
+        <span class="menu__title">Affiliate Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/product-marketing/"
+       header-tracking="topics.subcategory" tracking-detail="90">
+        <b class="menu__icon udi udi-product-marketing"></b>
+        <span class="menu__title">Product Marketing</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/marketing/other/"
+       header-tracking="topics.subcategory" tracking-detail="94">
+        <b class="menu__icon udi udi-marketing"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Lifestyle" data-purpose="ver-Lifestyle">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/lifestyle/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="274">
+        <b class="menu__icon udi udi-lifestyle"></b>
+        <span class="menu__title"> Lifestyle </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin2" id="submenu-Lifestyle">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/lifestyle/"
+                       header-tracking="topics.category" tracking-detail="274">
+                        <span class="menu__main-title">
+                            
+                            All Lifestyle
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/arts-and-crafts/"
+       header-tracking="topics.subcategory" tracking-detail="180">
+        <b class="menu__icon udi udi-arts-and-crafts"></b>
+        <span class="menu__title">Arts &amp; Crafts</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/food-and-beverage/"
+       header-tracking="topics.subcategory" tracking-detail="182">
+        <b class="menu__icon udi udi-food-and-beverage"></b>
+        <span class="menu__title">Food &amp; Beverage</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/beauty-and-makeup/"
+       header-tracking="topics.subcategory" tracking-detail="184">
+        <b class="menu__icon udi udi-beauty-and-makeup"></b>
+        <span class="menu__title">Beauty &amp; Makeup</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/travel/"
+       header-tracking="topics.subcategory" tracking-detail="186">
+        <b class="menu__icon udi udi-travel"></b>
+        <span class="menu__title">Travel</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/gaming/"
+       header-tracking="topics.subcategory" tracking-detail="188">
+        <b class="menu__icon udi udi-gaming"></b>
+        <span class="menu__title">Gaming</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/home-improvement/"
+       header-tracking="topics.subcategory" tracking-detail="190">
+        <b class="menu__icon udi udi-home-improvement"></b>
+        <span class="menu__title">Home Improvement</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/pet-care-and-training/"
+       header-tracking="topics.subcategory" tracking-detail="192">
+        <b class="menu__icon udi udi-pet-care-and-training"></b>
+        <span class="menu__title">Pet Care &amp; Training</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/lifestyle/other/"
+       header-tracking="topics.subcategory" tracking-detail="194">
+        <b class="menu__icon udi udi-lifestyle"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Photography" data-purpose="ver-Photography">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/photography/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="273">
+        <b class="menu__icon udi udi-photography"></b>
+        <span class="menu__title"> Photography </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin3" id="submenu-Photography">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/photography/"
+                       header-tracking="topics.category" tracking-detail="273">
+                        <span class="menu__main-title">
+                            
+                            All Photography
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/digital-photography/"
+       header-tracking="topics.subcategory" tracking-detail="370">
+        <b class="menu__icon udi udi-digital-photography"></b>
+        <span class="menu__title">Digital Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/photography-fundamentals/"
+       header-tracking="topics.subcategory" tracking-detail="196">
+        <b class="menu__icon udi udi-photography-fundamentals"></b>
+        <span class="menu__title">Photography Fundamentals</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/portraits/"
+       header-tracking="topics.subcategory" tracking-detail="204">
+        <b class="menu__icon udi udi-portraits"></b>
+        <span class="menu__title">Portraits</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/landscape/"
+       header-tracking="topics.subcategory" tracking-detail="200">
+        <b class="menu__icon udi udi-landscape"></b>
+        <span class="menu__title">Landscape</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/black-and-white/"
+       header-tracking="topics.subcategory" tracking-detail="206">
+        <b class="menu__icon udi udi-black-and-white"></b>
+        <span class="menu__title">Black &amp; White</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/photography-tools/"
+       header-tracking="topics.subcategory" tracking-detail="198">
+        <b class="menu__icon udi udi-photography-tools"></b>
+        <span class="menu__title">Photography Tools</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/mobile-photography/"
+       header-tracking="topics.subcategory" tracking-detail="202">
+        <b class="menu__icon udi udi-mobile-photography"></b>
+        <span class="menu__title">Mobile Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/travel-photography/"
+       header-tracking="topics.subcategory" tracking-detail="210">
+        <b class="menu__icon udi udi-travel-photography"></b>
+        <span class="menu__title">Travel Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/commercial-photography/"
+       header-tracking="topics.subcategory" tracking-detail="208">
+        <b class="menu__icon udi udi-commercial-photography"></b>
+        <span class="menu__title">Commercial Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/wedding-photography/"
+       header-tracking="topics.subcategory" tracking-detail="212">
+        <b class="menu__icon udi udi-wedding-photography"></b>
+        <span class="menu__title">Wedding Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/wildlife-photography/"
+       header-tracking="topics.subcategory" tracking-detail="216">
+        <b class="menu__icon udi udi-wildlife-photography"></b>
+        <span class="menu__title">Wildlife Photography</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/video-design/"
+       header-tracking="topics.subcategory" tracking-detail="218">
+        <b class="menu__icon udi udi-video-design"></b>
+        <span class="menu__title">Video Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/photography/other/"
+       header-tracking="topics.subcategory" tracking-detail="220">
+        <b class="menu__icon udi udi-photography"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Health-and-Fitness" data-purpose="ver-Health-and-Fitness">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/health-and-fitness/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="276">
+        <b class="menu__icon udi udi-health-and-fitness"></b>
+        <span class="menu__title"> Health &amp; Fitness </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin2" id="submenu-Health-and-Fitness">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/health-and-fitness/"
+                       header-tracking="topics.category" tracking-detail="276">
+                        <span class="menu__main-title">
+                            
+                            All Health &amp; Fitness
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/fitness/"
+       header-tracking="topics.subcategory" tracking-detail="222">
+        <b class="menu__icon udi udi-fitness"></b>
+        <span class="menu__title">Fitness</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/general-health/"
+       header-tracking="topics.subcategory" tracking-detail="224">
+        <b class="menu__icon udi udi-general-health"></b>
+        <span class="menu__title">General Health</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/sports/"
+       header-tracking="topics.subcategory" tracking-detail="226">
+        <b class="menu__icon udi udi-sports"></b>
+        <span class="menu__title">Sports</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/nutrition/"
+       header-tracking="topics.subcategory" tracking-detail="228">
+        <b class="menu__icon udi udi-nutrition"></b>
+        <span class="menu__title">Nutrition</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/yoga/"
+       header-tracking="topics.subcategory" tracking-detail="230">
+        <b class="menu__icon udi udi-yoga"></b>
+        <span class="menu__title">Yoga</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/mental-health/"
+       header-tracking="topics.subcategory" tracking-detail="232">
+        <b class="menu__icon udi udi-mental-health"></b>
+        <span class="menu__title">Mental Health</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/dieting/"
+       header-tracking="topics.subcategory" tracking-detail="234">
+        <b class="menu__icon udi udi-dieting"></b>
+        <span class="menu__title">Dieting</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/self-defense/"
+       header-tracking="topics.subcategory" tracking-detail="236">
+        <b class="menu__icon udi udi-self-defense"></b>
+        <span class="menu__title">Self Defense</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/safety-and-first-aid/"
+       header-tracking="topics.subcategory" tracking-detail="238">
+        <b class="menu__icon udi udi-safety-and-first-aid"></b>
+        <span class="menu__title">Safety &amp; First Aid</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/dance/"
+       header-tracking="topics.subcategory" tracking-detail="240">
+        <b class="menu__icon udi udi-dance"></b>
+        <span class="menu__title">Dance</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/meditation/"
+       header-tracking="topics.subcategory" tracking-detail="242">
+        <b class="menu__icon udi udi-meditation"></b>
+        <span class="menu__title">Meditation</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/health-and-fitness/other/"
+       header-tracking="topics.subcategory" tracking-detail="244">
+        <b class="menu__icon udi udi-health-and-fitness"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Teacher-Training" data-purpose="ver-Teacher-Training">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/teacher-training/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="277">
+        <b class="menu__icon udi udi-teacher-training"></b>
+        <span class="menu__title"> Teacher Training </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin4" id="submenu-Teacher-Training">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/teacher-training/"
+                       header-tracking="topics.category" tracking-detail="277">
+                        <span class="menu__main-title">
+                            
+                            All Teacher Training
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/teacher-training/instructional-design/"
+       header-tracking="topics.subcategory" tracking-detail="246">
+        <b class="menu__icon udi udi-instructional-design"></b>
+        <span class="menu__title">Instructional Design</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/teacher-training/educational-development/"
+       header-tracking="topics.subcategory" tracking-detail="248">
+        <b class="menu__icon udi udi-educational-development"></b>
+        <span class="menu__title">Educational Development</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/teacher-training/teaching-tools/"
+       header-tracking="topics.subcategory" tracking-detail="250">
+        <b class="menu__icon udi udi-teaching-tools"></b>
+        <span class="menu__title">Teaching Tools</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/teacher-training/other/"
+       header-tracking="topics.subcategory" tracking-detail="252">
+        <b class="menu__icon udi udi-teacher-training"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Music" data-purpose="ver-Music">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/music/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="278">
+        <b class="menu__icon udi udi-music"></b>
+        <span class="menu__title"> Music </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin3" id="submenu-Music">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/music/"
+                       header-tracking="topics.category" tracking-detail="278">
+                        <span class="menu__main-title">
+                            
+                            All Music
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/music/instruments/"
+       header-tracking="topics.subcategory" tracking-detail="296">
+        <b class="menu__icon udi udi-instruments"></b>
+        <span class="menu__title">Instruments</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/production/"
+       header-tracking="topics.subcategory" tracking-detail="298">
+        <b class="menu__icon udi udi-production"></b>
+        <span class="menu__title">Production</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/music-fundamentals/"
+       header-tracking="topics.subcategory" tracking-detail="300">
+        <b class="menu__icon udi udi-music-fundamentals"></b>
+        <span class="menu__title">Music Fundamentals</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/vocal/"
+       header-tracking="topics.subcategory" tracking-detail="302">
+        <b class="menu__icon udi udi-vocal"></b>
+        <span class="menu__title">Vocal</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/music-techniques/"
+       header-tracking="topics.subcategory" tracking-detail="304">
+        <b class="menu__icon udi udi-music-techniques"></b>
+        <span class="menu__title">Music Techniques</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/music-software/"
+       header-tracking="topics.subcategory" tracking-detail="306">
+        <b class="menu__icon udi udi-music-software"></b>
+        <span class="menu__title">Music Software</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/music/other/"
+       header-tracking="topics.subcategory" tracking-detail="308">
+        <b class="menu__icon udi udi-music"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Academics" data-purpose="ver-Academics">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/academics/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="300">
+        <b class="menu__icon udi udi-academics"></b>
+        <span class="menu__title"> Academics </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin4" id="submenu-Academics">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/academics/"
+                       header-tracking="topics.category" tracking-detail="300">
+                        <span class="menu__main-title">
+                            
+                            All Academics
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/academics/social-science/"
+       header-tracking="topics.subcategory" tracking-detail="376">
+        <b class="menu__icon udi udi-social-science"></b>
+        <span class="menu__title">Social Science</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/academics/math-and-science/"
+       header-tracking="topics.subcategory" tracking-detail="378">
+        <b class="menu__icon udi udi-math-and-science"></b>
+        <span class="menu__title">Math &amp; Science</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/academics/humanities/"
+       header-tracking="topics.subcategory" tracking-detail="380">
+        <b class="menu__icon udi udi-humanities"></b>
+        <span class="menu__title">Humanities</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Language" data-purpose="ver-Language">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/language/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="279">
+        <b class="menu__icon udi udi-language"></b>
+        <span class="menu__title"> Language </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin4" id="submenu-Language">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/language/"
+                       header-tracking="topics.category" tracking-detail="279">
+                        <span class="menu__main-title">
+                            
+                            All Language
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/language/english/"
+       header-tracking="topics.subcategory" tracking-detail="254">
+        <b class="menu__icon udi udi-english"></b>
+        <span class="menu__title">English</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/spanish/"
+       header-tracking="topics.subcategory" tracking-detail="256">
+        <b class="menu__icon udi udi-spanish"></b>
+        <span class="menu__title">Spanish</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/german/"
+       header-tracking="topics.subcategory" tracking-detail="258">
+        <b class="menu__icon udi udi-german"></b>
+        <span class="menu__title">German</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/french/"
+       header-tracking="topics.subcategory" tracking-detail="260">
+        <b class="menu__icon udi udi-french"></b>
+        <span class="menu__title">French</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/japanese/"
+       header-tracking="topics.subcategory" tracking-detail="262">
+        <b class="menu__icon udi udi-japanese"></b>
+        <span class="menu__title">Japanese</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/portuguese/"
+       header-tracking="topics.subcategory" tracking-detail="264">
+        <b class="menu__icon udi udi-portuguese"></b>
+        <span class="menu__title">Portuguese</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/chinese/"
+       header-tracking="topics.subcategory" tracking-detail="266">
+        <b class="menu__icon udi udi-chinese"></b>
+        <span class="menu__title">Chinese</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/russian/"
+       header-tracking="topics.subcategory" tracking-detail="268">
+        <b class="menu__icon udi udi-russian"></b>
+        <span class="menu__title">Russian</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/latin/"
+       header-tracking="topics.subcategory" tracking-detail="270">
+        <b class="menu__icon udi udi-latin"></b>
+        <span class="menu__title">Latin</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/arabic/"
+       header-tracking="topics.subcategory" tracking-detail="272">
+        <b class="menu__icon udi udi-arabic"></b>
+        <span class="menu__title">Arabic</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/hebrew/"
+       header-tracking="topics.subcategory" tracking-detail="274">
+        <b class="menu__icon udi udi-hebrew"></b>
+        <span class="menu__title">Hebrew</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/italian/"
+       header-tracking="topics.subcategory" tracking-detail="276">
+        <b class="menu__icon udi udi-italian"></b>
+        <span class="menu__title">Italian</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/language/other/"
+       header-tracking="topics.subcategory" tracking-detail="294">
+        <b class="menu__icon udi udi-language"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+        
+
+
+
+<li class="menu__link" data-submenu-id="submenu-Test-Prep" data-purpose="ver-Test-Prep">
+    <a click-on-mobile submenu-selector=".menu__link" href="/courses/test-prep/"
+       class="main-cat"
+       header-tracking="topics.category" tracking-detail="298">
+        <b class="menu__icon udi udi-test-prep"></b>
+        <span class="menu__title"> Test Prep </span>
+        
+            <span class="udi udi-next menu__arrow"></span>
+        
+    </a>
+    
+
+
+
+    <div class="dropdown__menu dropdown__menu--sub skin4" id="submenu-Test-Prep">
+        <div class="fxdc h100p">
+            <ul class="menu__sub-list">
+                <li>
+                    <a href="/courses/test-prep/"
+                       header-tracking="topics.category" tracking-detail="298">
+                        <span class="menu__main-title">
+                            
+                            All Test Prep
+                        </span>
+                    </a>
+                </li>
+                
+                    
+
+
+<li>
+    <a href="/courses/test-prep/grad-entry-exam/"
+       header-tracking="topics.subcategory" tracking-detail="342">
+        <b class="menu__icon udi udi-grad-entry-exam"></b>
+        <span class="menu__title">Grad Entry Exam</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/test-prep/international-high-school/"
+       header-tracking="topics.subcategory" tracking-detail="344">
+        <b class="menu__icon udi udi-international-high-school"></b>
+        <span class="menu__title">International High School</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/test-prep/college-entry-exam/"
+       header-tracking="topics.subcategory" tracking-detail="346">
+        <b class="menu__icon udi udi-college-entry-exam"></b>
+        <span class="menu__title">College Entry Exam</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/test-prep/test-taking-skills/"
+       header-tracking="topics.subcategory" tracking-detail="348">
+        <b class="menu__icon udi udi-test-taking-skills"></b>
+        <span class="menu__title">Test Taking Skills</span>
+    </a>
+</li>
+
+                
+                    
+
+
+<li>
+    <a href="/courses/test-prep/other/"
+       header-tracking="topics.subcategory" tracking-detail="350">
+        <b class="menu__icon udi udi-test-prep"></b>
+        <span class="menu__title">Other</span>
+    </a>
+</li>
+
+                
+            </ul>
+        </div>
+    </div>
+
+
+</li>
+
+    
+
+
+</ul>
+
+        </div>
+    </div>
+
+
+
+
+
+<div toggleable-search-field
+     class="c_header__search" ng-class="css.search"
+     >
+    <button class="c_header__mobile-bt mobile-bt--search udi udi-search"
+            header-tracking="search.open"
+            ng-click="openSearchField()"></button>
+    <div class="quick-search__form h100p"
+        
+            search-suggestions-field="search-v5"
+            show-overlay-on="showSuggestions"
+            show-overlay-class="overlay--search-show"
+        
+         >
+
+        
+            <form id="searchbox" action="/courses/search/" class="h100p"
+                  header-tracking="search.submit" tracking-event="submit">
+                <input type="text" name="q"
+                       value=""
+                       autocomplete="off" maxlength="200"
+                       placeholder="Search for Courses"
+                       data-purpose="search-input"
+                       class="quick-search__input"
+                       ng-keydown="hotkey($event)" ng-model="searchPhrase" ng-change="suggest()" />
+                <input type="hidden" name="src" value="ukw" />
+                <button type="submit"
+                        data-purpose="do-search"
+                        class="udi udi-search quick-search__btn"></button>
+            </form>
+        
+    </div>
+    <button class="mobile-bt--search-cancel"
+            header-tracking="search.close"
+            ng-click="closeSearchField()">Cancel</button>
+</div>
+
+
+
+
+
+
+
+                
+            </div>
+            <div class="c_header__mobile-spacer">&nbsp;</div>
+        
+
+        
+            
+                
+
+
+<div class="c_header__right">
+    
+
+    
+    <div class="dropdown dropdown--instructor">
+        <div class="dropdown__toggle">
+            <a class="dropdown__main-link" data-purpose="instructor-dropdown"
+               
+               href="https://teach.udemy.com/?ref=teach_header"
+               header-tracking="teaching.main"
+               tracking-detail="become-an-instructor">
+                Become an Instructor
+            </a>
+        </div>
+        
+    </div>
+
+
+
+    
+        
+
+
+
+
+    <div class="shopping-cart">
+        <cart-dropdown>
+            <div class="dropdown dropdown--shopping-cart">
+                <div class="dropdown__toggle">
+                    <a class="dropdown__main-link" href="/cart/">
+                        <i class="udi udi-cart dropdown__main-icon" data-purpose="cart-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </cart-dropdown>
+    </div>
+
+
+
+<div class="dropdown dropdown--login">
+    <div class="dropdown__toggle">
+        <require-auth data-purpose="login" show-login="true" header-tracking="login">
+            <a class="dropdown__main-link" href="javascript:void(0)">Login</a>
+        </require-auth>
+    </div>
+</div>
+
+<div class="dropdown dropdown--signup">
+    <div class="dropdown__toggle">
+        <require-auth data-purpose="header-signup" header-tracking="signup">
+            <a class="dropdown__main-link" href="javascript:void(0)">Sign Up</a>
+        </require-auth>
+    </div>
+</div>
+
+    
+</div>
+
+            
+        
+    </div>
+    
+
+
+
+
+
+
+<nav nav-menu
+     class="overflow-nav "
+     ng-class="[css.mainNav, css.subNav]">
+    <div class="overflow-nav--main">
+        
+        
+        <ul class="overflow-nav__links">
+            
+            
+                
+                        <li class="menu__link">
+                            <a href="javascript:void(0)" ng-click="setSubNavCss('nav-open--sub')"
+                               header-tracking="mobile-nav.topics">
+                                <span class="menu__title">Browse</span>
+                                <span class="udi udi-next"></span>
+                            </a>
+                        </li>
+                
+            
+            
+                
+                    <li class="menu__link menu__link--bottom">
+                        <require-auth
+                           data-purpose="header-signup-mobile-nav"
+                           header-tracking="mobile-nav.signup">
+                            <a href="javascript:void(0)">
+                                <span class="menu__title">Sign Up</span>
+                            </a>
+                        </require-auth>
+                    </li>
+                    <li class="menu__link menu__link--bottom">
+                        <require-auth
+                           data-purpose="login-mobile-nav"
+                           show-login="true"
+                           header-tracking="mobile-nav.login">
+                            <a href="javascript:void(0)">
+                                <span class="menu__title">Login</span>
+                            </a>
+                        </require-auth>
+                    </li>
+                
+                
+                    <li class="menu__link menu__link--bottom">
+                        <a href="https://teach.udemy.com/?ref=teach_header"
+                           header-tracking="mobile-nav.teaching"
+                           tracking-detail="become-an-instructor">
+                            <span class="menu__title">Become an Instructor</span>
+                        </a>
+                    </li>
+                
+                
+                <li class="menu__link menu__link--bottom">
+                    <a href="/support/" header-tracking="mobile-nav.support">
+                        <span class="menu__title">Help</span>
+                    </a>
+                </li>
+
+                
+            
+        </ul>
+    </div>
+    
+        <div class="overflow-nav--sub">
+            <header>
+                <button class="overflow-nav__back-bt" ng-click="setSubNavCss('')"
+                        header-tracking="mobile-nav.topics.close">
+                    <span class="udi udi-previous"></span>
+                    Menu
+                </button>
+                Browse
+            </header>
+            <ul>
+                
+                    
+                        <li class="menu__link">
+                            <a href="/courses/development/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="288">
+                                <b class="menu__icon udi udi-development"></b>
+                                <span class="menu__title">Development</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/business/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="268">
+                                <b class="menu__icon udi udi-business"></b>
+                                <span class="menu__title">Business</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/it-and-software/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="294">
+                                <b class="menu__icon udi udi-it-and-software"></b>
+                                <span class="menu__title">IT &amp; Software</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/office-productivity/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="292">
+                                <b class="menu__icon udi udi-office-productivity"></b>
+                                <span class="menu__title">Office Productivity</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/personal-development/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="296">
+                                <b class="menu__icon udi udi-personal-development"></b>
+                                <span class="menu__title">Personal Development</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/design/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="269">
+                                <b class="menu__icon udi udi-design"></b>
+                                <span class="menu__title">Design</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/marketing/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="290">
+                                <b class="menu__icon udi udi-marketing"></b>
+                                <span class="menu__title">Marketing</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/lifestyle/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="274">
+                                <b class="menu__icon udi udi-lifestyle"></b>
+                                <span class="menu__title">Lifestyle</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/photography/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="273">
+                                <b class="menu__icon udi udi-photography"></b>
+                                <span class="menu__title">Photography</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/health-and-fitness/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="276">
+                                <b class="menu__icon udi udi-health-and-fitness"></b>
+                                <span class="menu__title">Health &amp; Fitness</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/teacher-training/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="277">
+                                <b class="menu__icon udi udi-teacher-training"></b>
+                                <span class="menu__title">Teacher Training</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/music/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="278">
+                                <b class="menu__icon udi udi-music"></b>
+                                <span class="menu__title">Music</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/academics/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="300">
+                                <b class="menu__icon udi udi-academics"></b>
+                                <span class="menu__title">Academics</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/language/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="279">
+                                <b class="menu__icon udi udi-language"></b>
+                                <span class="menu__title">Language</span>
+                            </a>
+                        </li>
+                    
+                        <li class="menu__link">
+                            <a href="/courses/test-prep/"
+                               header-tracking="mobile-nav.topics.category" tracking-detail="298">
+                                <b class="menu__icon udi udi-test-prep"></b>
+                                <span class="menu__title">Test Prep</span>
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+        </div>
+    
+</nav>
+
+    <div class="c_header__overlay" overlay ng-click="close()" ng-class="[css.search, css.overlay]"
+         header-tracking="overlay"></div>
+</div>
+
+            
+        
+
+        
+
+
+
+
+        
+    
+    
+
+    
+    
+
+    <div itemscope="itemscope" itemtype="http://schema.org/CreativeWork">
+        <span class="hidden" itemprop="dateModified">
+            2017-02-22 13:15:25
+        </span>
+    </div>
+
+
+    
+
+    <div id="schema_markup" data-purpose="schema_markup">
+    <script type="application/ld+json">
+    {"@context": "http://schema.org", "image": "https://udemy-images.udemy.com/course/750x422/475806_33bb_3.jpg", "seller": {"sameAs": "www.udemy.com", "@type": "Organization", "name": "Udemy"}, "description": "Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark", "@type": "Course", "subjectOfStudy": "Development", "isAccessibleForFree": false, "@id": "https://www.udemy.com/learn-apache-spark-from-scratch/", "provider": {"sameAs": "www.udemy.com/user/eduonix/", "@type": "Organization", "name": "Eduonix Learning Solutions"}, "audience": {"@type": "Audience", "audienceType": ["Students who want to learn big data application development with Apache Spark will find this course immensely helpful"]}, "grantsCredential": true, "hasCourseInstance": [{"instructor": [{"@type": "Person", "name": "Eduonix Learning Solutions"}, {"@type": "Person", "name": "Eduonix-Tech ."}], "@type": "CourseInstance", "inLanguage": "en"}], "name": "Learn Apache Spark from Scratch"}
+    </script>
+</div>
+
+
+
+    
+
+    
+        
+            
+
+        
+
+        
+            
+
+        
+    
+
+
+    
+    
+    
+    
+
+    <course-category-menu class="category-menu"
+                          category-data="[{&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 288, &quot;title&quot;: &quot;Development&quot;, &quot;icon_class&quot;: &quot;udi udi-development&quot;, &quot;link_class&quot;: &quot;category-menu__link--primary&quot;, &quot;url&quot;: &quot;/courses/development/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 268, &quot;title&quot;: &quot;Business&quot;, &quot;icon_class&quot;: &quot;udi udi-business&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/business/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 294, &quot;title&quot;: &quot;IT &amp; Software&quot;, &quot;icon_class&quot;: &quot;udi udi-it-and-software&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/it-and-software/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 292, &quot;title&quot;: &quot;Office Productivity&quot;, &quot;icon_class&quot;: &quot;udi udi-office-productivity&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/office-productivity/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 296, &quot;title&quot;: &quot;Personal Development&quot;, &quot;icon_class&quot;: &quot;udi udi-personal-development&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/personal-development/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 269, &quot;title&quot;: &quot;Design&quot;, &quot;icon_class&quot;: &quot;udi udi-design&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/design/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 290, &quot;title&quot;: &quot;Marketing&quot;, &quot;icon_class&quot;: &quot;udi udi-marketing&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/marketing/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 274, &quot;title&quot;: &quot;Lifestyle&quot;, &quot;icon_class&quot;: &quot;udi udi-lifestyle&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/lifestyle/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 273, &quot;title&quot;: &quot;Photography&quot;, &quot;icon_class&quot;: &quot;udi udi-photography&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/photography/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 276, &quot;title&quot;: &quot;Health &amp; Fitness&quot;, &quot;icon_class&quot;: &quot;udi udi-health-and-fitness&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/health-and-fitness/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 277, &quot;title&quot;: &quot;Teacher Training&quot;, &quot;icon_class&quot;: &quot;udi udi-teacher-training&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/teacher-training/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 278, &quot;title&quot;: &quot;Music&quot;, &quot;icon_class&quot;: &quot;udi udi-music&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/music/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 300, &quot;title&quot;: &quot;Academics&quot;, &quot;icon_class&quot;: &quot;udi udi-academics&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/academics/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 279, &quot;title&quot;: &quot;Language&quot;, &quot;icon_class&quot;: &quot;udi udi-language&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/language/&quot;}, {&quot;_class&quot;: &quot;course_category&quot;, &quot;id&quot;: 298, &quot;title&quot;: &quot;Test Prep&quot;, &quot;icon_class&quot;: &quot;udi udi-test-prep&quot;, &quot;link_class&quot;: &quot;category-menu__link--other&quot;, &quot;url&quot;: &quot;/courses/test-prep/&quot;}]"
+                          data-purpose="category-menu">
+    </course-category-menu>
+
+
+
+    <div class="full-width full-width--streamer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 non-purchase-actions">
+                    
+
+    <a class="buy-for-team__link"
+       href="https://business.udemy.com/request-demo?ref=marketplace_Development"
+       user-tracker-click
+       type="buy-for-team"
+       data-purpose="buy-for-team-link"
+       >
+        Buying for a Team?
+    </a>
+
+
+                    
+
+    <a class="gift-this-course__link ud-popup"
+       data-purpose="gift-course"
+       data-requireLogin="true"
+       href="/gift/learn-apache-spark-from-scratch/?couponCode=Feb-SW-17S"
+       >
+        Gift This Course
+    </a>
+
+
+                    
+
+    
+        <div class="ud-discover-tracker"
+             data-action="add-to-wishlist-clicked"
+             data-course-id="BUQeeV5U"
+             data-user-id=""
+             data-target-selector-class="js-discover-tracker-elm"
+             >
+
+            <div href="/learn-apache-spark-from-scratch/?xref=wish"
+                 data-purpose="wishlist"
+                 data-course-id="475806"
+                 data-is-wishlisted="false"
+                 data-show-confirm-dialog="false"
+                 class="wishlist ud-wishlist js-discover-tracker-elm
+                       ud-popup
+                       
+                       "
+                 
+                     data-requireLogin="true"
+                     data-showloginpopup="false"
+                     data-signupPopupIdentifier="login-for-wishlist"
+                 
+                 >
+
+                <span class="in-wishlist wishlist__text wishlist__text--in-wishlist" data-purpose="in-wishlist">
+                    Wishlisted
+                </span>
+                <span class="not-in-wishlist wishlist__text wishlist__text--not-in-wishlist" data-purpose="not-in-wishlist">
+                    
+    Wishlist
+
+                </span>
+
+                <i class="in-wishlist wishlist__icon wishlist__icon--in-wishlist udi udi-heart"></i>
+                <i class="not-in-wishlist wishlist__icon wishlist__icon--not-in-wishlist udi udi-heart-o"></i>
+
+                <div class="wishlist__confirm-dialog js-wishlist-confirm-popup">
+                    <p>
+                        Please confirm that you want to add <b>Learn Apache Spark from Scratch</b> to your Wishlist.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary">
+                            Add to Wishlist
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 left-col">
+                    
+
+    <div class="clp-lead">
+        <h1 class="clp-lead__title" data-purpose="lead-title">
+            Learn Apache Spark from Scratch
+        </h1>
+
+        <div class="clp-lead__headline">
+            Learn Data Science Techniques and Large Scale Parallel Programming using Apache Spark
+        </div>
+
+        <div class="clp-lead__element-row">
+            
+            <div class="clp-lead__element-item">
+                
+
+    <div class="rating"
+         itemscope
+         itemprop="aggregateRating"
+         itemtype="http://schema.org/AggregateRating">
+        <meta itemprop="itemReviewed" content="Learn Apache Spark from Scratch" />
+        <meta itemprop="ratingValue" content="3.4" />
+        <meta itemprop="ratingCount" content="124" />
+        <meta itemprop="worstRating" content="0.5" />
+        <meta itemprop="bestRating" content="5" />
+
+        <div class="rating__stars">
+            <a href="/learn-apache-spark-from-scratch/#reviews" target="_self">
+                <span class="star-rating--static star-rating--smaller">
+                    <span style="width: 68%;"></span>
+                </span>
+            </a>
+        </div>
+
+        <div class="rate-count">
+            <span class="tooltip-container tooltip--rate-count-container">
+                
+                    3.4
+                    (124 ratings)
+                
+                <span class="tooltip tooltip-neutral tooltip--rate-count ">
+                    <div class="tooltip-inner">
+                        Instead of using a simple lifetime average, Udemy calculates a course's star rating by considering a number of different factors such as the number of ratings, the age of ratings, and the likelihood of fraudulent ratings.
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+
+            </div>
+            <div class="clp-lead__element-item">
+                
+
+    
+        
+            1,951 students enrolled
+        
+    
+
+
+            </div>
+        </div>
+
+        <div class="clp-lead__element-row">
+            <div class="clp-lead__element-item">
+                
+
+    <span data-purpose="instructor-name-top">
+        Created by
+        
+            
+                <a href="/learn-apache-spark-from-scratch/#instructor-598757" target="_self" class="instructor-links__link">
+                    Eduonix Learning Solutions
+                </a>,
+            
+        
+            
+                <a href="/learn-apache-spark-from-scratch/#instructor-15712140" target="_self" class="instructor-links__link">
+                    Eduonix-Tech .
+                </a>
+            
+        
+    </span>
+
+
+            </div>
+            <div class="clp-lead__element-item">
+                
+
+    
+        Last updated 7/2015
+
+    
+
+
+            </div>
+            <div class="clp-lead__element-item">
+                English
+                
+            </div>
+        </div>
+    </div>
+
+
+                </div>
+                <div class="col-xs-4 right-col js-right-col">
+                    <div class="right-col__content js-right-col__content">
+                        
+
+    <div class="introduction-asset">
+        
+            <a open-modal
+               href="javascript:void(0)"
+               data-course-id="475806"
+               data-template-url="/475806/preview/?startPreviewId="
+               class="ud-courseimpressiontracker"
+               data-additional-class="generic-modal--previews-video"
+               data-tracking-type="promo-video-watch">
+                <div class="introduction-asset__placeholder play-button-trigger">
+                    <div class="play-button"></div>
+                    <span class="introduction_asset__text">Preview This Course</span>
+                </div>
+                <img class="introduction-asset__img" src="https://udemy-images.udemy.com/course/240x135/475806_33bb_3.jpg"/>
+            </a>
+        
+    </div>
+
+
+                        <div class="right-col__inner">
+                            
+
+    <div class="buy-box">
+
+        <div class="buy-box__element">
+            
+        </div>
+        <div class="buy-box__element">
+            
+
+    <div class="price-text">
+        
+            <span class="price-text__current" data-purpose="discount-price-text">
+                C$15
+            </span>
+
+            <span class="price-text__old price-text__old--price" data-purpose="course-price-text">
+                C$35
+            </span>
+            
+                <span class="price-text__old" data-purpose="discount-rate">
+                    
+                        57% off
+                    
+                </span>
+            
+        
+    </div>
+
+
+        </div>
+        <div class="buy-box__element buy-box__element--discount-expiration">
+            
+
+    <div class="discount-expiration-relative
+                "
+         data-purpose="discount-expiration-relative">
+        <i class="discount-expiration-relative__clock-icon udi udi-stress-management"></i>
+        <span>
+            <b>2 days</b> left at this price!
+        </span>
+    </div>
+
+
+            
+        </div>
+        <div class="buy-box__element buy-box__element--buy-button">
+            
+
+    <a href="/payment/checkout/?boType=course&amp;boId=475806&amp;is_dj=1&amp;couponCode=Feb-SW-17S"
+       open-modal
+       data-purpose="buy-this-course-button"
+       class="btn course-cta course-cta--buy
+              
+              
+              "
+       
+        >
+        Buy Now
+    </a>
+
+
+        </div>
+        <div class="buy-box__element">
+            
+
+    
+        
+
+
+
+    <div class="fullbleed ud-angular-loader"
+         data-module-id="shopping-cart"
+         data-module-name="ng/apps/shopping-cart/components/add-to-cart/add-to-cart.ng-directive"
+         data-purpose="add-to-cart">
+        <add-to-cart list-name="cart"
+                     buyable-ids="[475806]"
+                     buyable-types="[&#39;course&#39;]"
+                     cart-button-classes-add=""
+                     cart-button-classes-added=""
+                     cart-button-text-add="Add to Cart"
+                     cart-button-text-added="Go to Cart"
+                     on-add-redirect-url="/cart/added/course/475806"
+                     class="disabled">
+            <button class="btn btn-default mt0 course-cta course-cta--add-to-cart disabled"
+                    disabled>
+                <span class="cart-load-spinner">
+                    <span class="udi udi-circle-loader udi-small"></span>
+                </span>
+                <span class="text--add-to-cart">
+                    Add to Cart
+                </span>
+            </button>
+        </add-to-cart>
+    </div>
+
+
+    
+
+
+        </div>
+
+        
+            <div class="buy-box__element buy-box__element--money-back">
+                <span class="money-back">
+                    30-Day Money-Back Guarantee
+                </span>
+            </div>
+        
+
+        <script type="text/javascript">
+            UD.performance.mark('CLP.buy-button-rendered');
+            UD.performance.sync();
+        </script>
+    </div>
+
+
+                            
+
+    <div class="incentives">
+        <div>
+            <b>Includes:</b>
+        </div>
+
+        <ul>
+            
+                <li class="incentives__item">
+                    <i class="incentives__icon incentives__icon--bold udi udi-video-design"></i>
+                    <span data-purpose="video-content-length">
+                        
+                            4 hours on-demand video
+                        
+                    </span>
+                </li>
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="incentives__item">
+                <i class="incentives__icon incentives__icon--bold udi udi-what-lifetime"></i>
+                Full lifetime access
+            </li>
+
+            <li class="incentives__item">
+                <i class="incentives__icon incentives__icon--bold udi udi-mobile-apps"></i>
+                Access on mobile and TV
+            </li>
+
+            
+
+            
+                <li class="incentives__item">
+                    <i class="incentives__icon incentives__icon--bold udi udi-academics"></i>
+                    <span data-purpose="incentive-certificate">
+                        Certificate of Completion
+                    </span>
+                </li>
+            
+
+            
+        </ul>
+    </div>
+
+
+                            
+
+    <div class="redeem-coupon" data-purpose="redeem-coupon">
+        
+            <div class="redeem-coupon__wrapper"
+                 onclick="this.style.display='none'">
+                <span class="redeem-coupon__pointer">Have a coupon?</span>
+            </div>
+        
+
+        <form class="redeem-coupon__form" action="/learn-apache-spark-from-scratch/">
+            <input type="hidden" name="ccManual">
+
+            
+
+            <input class="redeem-coupon__input" type="text" name="couponCode" value="" placeholder="Enter a Coupon">
+            <input class="redeem-coupon__submit" type="submit" value="Apply">
+        </form>
+    </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container--component-margin">
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8 left-col">
+                
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+
+    <div class="what-you-get">
+        <div class="js-simple-collapse js-simple-collapse--what-you-get"
+             data-purpose="course-objectives"
+             data-more="View More"
+             >
+            <div class="js-simple-collapse-inner">
+                <div class="what-you-get__content">
+                    <div class="what-you-get__title">
+                        What Will I Learn?
+                    </div>
+                    <div class="what-you-get__items">
+                        
+                            <div class="what-you-get__item">
+                                <span class="udi udi-check what-you-get__icon"></span>
+                                <span class="what-you-get__text">Use Apache Spark for Data Science Applications</span>
+                            </div>
+                        
+                            <div class="what-you-get__item">
+                                <span class="udi udi-check what-you-get__icon"></span>
+                                <span class="what-you-get__text">Understand the clustering with Yarn</span>
+                            </div>
+                        
+                            <div class="what-you-get__item">
+                                <span class="udi udi-check what-you-get__icon"></span>
+                                <span class="what-you-get__text">Build Application with Apache Spark</span>
+                            </div>
+                        
+                            <div class="what-you-get__item">
+                                <span class="udi udi-check what-you-get__icon"></span>
+                                <span class="what-you-get__text">Create Streaming applications with Spark</span>
+                            </div>
+                        
+                            <div class="what-you-get__item">
+                                <span class="udi udi-check what-you-get__icon"></span>
+                                <span class="what-you-get__text">Understand the core concepts of Spark</span>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                <a class="what-you-get__curriculum-link" href="/learn-apache-spark-from-scratch/#curriculum" target="_self">
+                    View Curriculum
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+
+    
+        <div class="requirements" data-purpose="course-requirements">
+            <div class="requirements__title">
+                Requirements
+            </div>
+            <div class="requirements__content">
+                <ul class="requirements__list">
+                    
+                        <li class="requirements__item">Should have basic programming knowledge preferably in Java</li>
+                    
+                </ul>
+            </div>
+        </div>
+    
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+    
+
+
+    
+        <div class="description ud-discover-tracker"
+             data-action="full-description-read"
+             data-course-id="BUQeeV5U"
+             data-user-id=""
+             data-target-selector-class="js-simple-collapse-more-btn"
+             data-purpose="course-description">
+
+            <div data-more="+ View More"
+                 
+
+                 >
+                <div class="js-simple-collapse-inner" data-purpose="collapse-description-text">
+                    <div class="description__title">
+                        Description
+                    </div>
+
+                    <p>Apache Spark is a fast cluster computing framework. It is used for large scale data processing. Our course provides an introduction to this amazing technology and you will learn to use Apache spark for big data projects. This introductory course is simple to follow and will lay the foundation for big data and parallel computing. The technology based on in memory primitives makes it almost 100 times faster than Hadoop and Mapreduce. </p>
+
+<p>The following content is covered in the course</p>
+
+<p><strong>- Apache Spark Applications</strong></p>
+
+<p><strong>- Machine Learning and Graph X</strong></p>
+
+<p><strong>- Run time modes like Yarn Cluster and Mesos Cluster</strong></p>
+
+<p><strong>- Learn to setup HortonWorks VM</strong></p>
+
+<p><strong>- Introduction to Spark Scala API</strong></p>
+
+<p><strong>- Execute Apache Spark Tasks</strong></p>
+
+<p><strong>- Configuring Apache Spark</strong></p>
+
+<p><strong>- Building and Running Spark Applications</strong></p>
+
+<p><strong>- Write Spark applications for visualization, machine learning, streaming SQL</strong></p>
+
+<p><strong>- Resilient Distributed datasets</strong></p>
+
+<p><strong>- Application Submission and Spark Driver</strong></p>
+
+<p><strong>- Lambda Architecture</strong></p>
+
+<p><strong>- Spark Streaming and Dstream</strong></p>
+
+<p>Learn all this and much more in this unique course with abundant practical tips and theoretical rigor to master Apache Spark.</p>
+
+<p><br></p>
+
+                    
+                        <div class="audience" data-purpose="course-audience">
+                            <div class="audience__title">
+                                Who is the target audience?
+                            </div>
+                            <ul class="audience__list">
+                                
+                                    <li>Students who want to learn big data application development with Apache Spark will find this course immensely helpful</li>
+                                
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                <div class="clp-merchandise">
+                    
+                        
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8 left-col">
+                
+
+    <div class="recommendations">
+        <courses-list tracking-context="landing-page"
+                      tracking-subcontext="also-viewed"
+                      template-name="courses-list-for-clp-also-viewed"
+                      source="{&#39;id&#39;: 475806}"
+                      source-page="landing-page"
+                      action="view"
+                      type="recommendations">
+            <div class="recommendations__content">
+                <div class="recommendations__course-cards">
+                    <div class="recommendations__title">
+                        Students Who Viewed This Course Also Viewed
+                    </div>
+                    <ul class="content-loader--list content-loader__card-container">
+                        
+                            <li class="content-loader__card bg-white">
+                                <div class="content-loader__item content-loader__item-1"></div>
+                                <div class="content-loader__item-container-1">
+                                    <div class="content-loader__item content-loader__item-2"></div>
+                                    <div class="content-loader__item content-loader__item-3"></div>
+                                    <div class="content-loader__item-container-2">
+                                        <div class="content-loader__item content-loader__item-4"></div>
+                                        <div class="content-loader__item content-loader__item-5"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                            <li class="content-loader__card bg-white">
+                                <div class="content-loader__item content-loader__item-1"></div>
+                                <div class="content-loader__item-container-1">
+                                    <div class="content-loader__item content-loader__item-2"></div>
+                                    <div class="content-loader__item content-loader__item-3"></div>
+                                    <div class="content-loader__item-container-2">
+                                        <div class="content-loader__item content-loader__item-4"></div>
+                                        <div class="content-loader__item content-loader__item-5"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                            <li class="content-loader__card bg-white">
+                                <div class="content-loader__item content-loader__item-1"></div>
+                                <div class="content-loader__item-container-1">
+                                    <div class="content-loader__item content-loader__item-2"></div>
+                                    <div class="content-loader__item content-loader__item-3"></div>
+                                    <div class="content-loader__item-container-2">
+                                        <div class="content-loader__item content-loader__item-4"></div>
+                                        <div class="content-loader__item content-loader__item-5"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                            <li class="content-loader__card bg-white">
+                                <div class="content-loader__item content-loader__item-1"></div>
+                                <div class="content-loader__item-container-1">
+                                    <div class="content-loader__item content-loader__item-2"></div>
+                                    <div class="content-loader__item content-loader__item-3"></div>
+                                    <div class="content-loader__item-container-2">
+                                        <div class="content-loader__item content-loader__item-4"></div>
+                                        <div class="content-loader__item content-loader__item-5"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                            <li class="content-loader__card bg-white">
+                                <div class="content-loader__item content-loader__item-1"></div>
+                                <div class="content-loader__item-container-1">
+                                    <div class="content-loader__item content-loader__item-2"></div>
+                                    <div class="content-loader__item content-loader__item-3"></div>
+                                    <div class="content-loader__item-container-2">
+                                        <div class="content-loader__item content-loader__item-4"></div>
+                                        <div class="content-loader__item content-loader__item-5"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </courses-list>
+    </div>
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+
+    <div id="curriculum" class="curriculum-v3-wrapper ud-curriculumexpand" user-tracker
+         data-purpose="course-curriculum-v3"
+         section-curriculum-loader
+         course-id="475806"
+         course-preview-path="/475806/preview/"
+         hide-captions="0"
+         has-more-to-load="0"
+         num-displayed-items="6"
+         is-seo-traffic="0">
+        <div class="curriculum-header-container usertracker-command"
+             data-usertracker-type="seen-curriculum">
+            <div class="header-left">
+                <div class="curriculum-header-title">
+                    Curriculum For This Course
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="js-toggle-all">
+                    <span class="collapsed-text">
+                        <a class="ud-discover-tracker sections-toggle" data-purpose="expand-lectures" data-action="full-curriculum-read" data-course-id="BUQeeV5U" data-user-id=""> Expand All </a> 16 Lectures
+                    </span>
+                    <span class="expanded-text">
+                        <a class="sections-toggle">Collapse All</a> 16 Lectures
+                    </span>
+                </span>
+                <span class="curriculum-header-length">
+                    04:08:06
+                </span>
+            </div>
+        </div>
+
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-1">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-1 in">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Introduction To Spark</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-1 in">
+                            1 Lecture
+                        </span>
+                        <span class="section-header-length">
+                            05:20
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-1 in">
+                    
+                        <div class="lecture-container  lecture-container--preview ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-1-1"><p style=""> 	Introduction to the Apache Spark Course from Eduonix </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            <a open-modal
+                                               href="javascript:void(0)"
+                                               
+                                                   data-template-url="/475806/preview/?startPreviewId=3110014"
+                                               
+                                               data-course-id="475806"
+                                               data-lecture-id="2759886"
+                                               class="ud-courseimpressiontracker"
+                                               data-additional-class="generic-modal--previews-video"
+                                               data-tracking-type="lecture-preview">
+                                                Course Introduction
+                                            </a>
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-1-1"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                    <a open-modal
+                                       href="javascript:void(0)"
+                                       
+                                           data-template-url="/475806/preview/?startPreviewId=3110014"
+                                       
+                                       data-course-id="475806"
+                                       data-lecture-id="2759886"
+                                       class="ud-courseimpressiontracker"
+                                       data-additional-class="generic-modal--previews-video"
+                                       data-tracking-type="lecture-preview">
+                                        <span class="preview-text">Preview</span>
+                                    </a>
+                                
+                                <span class="content-summary">
+                                    05:20
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-2">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-2 ">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Introduction and Application of Apache Spark</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-2 ">
+                            4 Lectures
+                        </span>
+                        <span class="section-header-length">
+                            57:49
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-2 ">
+                    
+                        <div class="lecture-container  lecture-container--preview ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-2-2"><p style=""> 	Learn about the application and context of Apache Spark </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            <a open-modal
+                                               href="javascript:void(0)"
+                                               
+                                                   data-template-url="/475806/preview/?startPreviewId=3110184"
+                                               
+                                               data-course-id="475806"
+                                               data-lecture-id="2759974"
+                                               class="ud-courseimpressiontracker"
+                                               data-additional-class="generic-modal--previews-video"
+                                               data-tracking-type="lecture-preview">
+                                                Understanding Apache Spark
+                                            </a>
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-2-2"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                    <a open-modal
+                                       href="javascript:void(0)"
+                                       
+                                           data-template-url="/475806/preview/?startPreviewId=3110184"
+                                       
+                                       data-course-id="475806"
+                                       data-lecture-id="2759974"
+                                       class="ud-courseimpressiontracker"
+                                       data-additional-class="generic-modal--previews-video"
+                                       data-tracking-type="lecture-preview">
+                                        <span class="preview-text">Preview</span>
+                                    </a>
+                                
+                                <span class="content-summary">
+                                    13:51
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-2-3"><p> 	Learn to install Apache Spark on a cluster </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Install Apache Spark on Cluster
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-2-3"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    17:38
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-2-4"><p style=""> 	Learn to use the spark scala API </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Apache Spark Scala API
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-2-4"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    09:04
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-2-5"><p style=""> 	Learn to run Apache Spark Code on Cluster </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Running Apache Spark Code
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-2-5"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    17:16
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-3">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-3 ">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Apache Spark with YARN Cluster</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-3 ">
+                            4 Lectures
+                        </span>
+                        <span class="section-header-length">
+                            01:06:23
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-3 ">
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-3-6"><p style=""> 	Learn to use Spark with Yarn </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Apache Spark in Yarn Context
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-3-6"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    15:42
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-3-7"><p style=""> 	Learn to configure Apache Spark with yarn </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Apache Spark with Yarn
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-3-7"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    17:22
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-3-8"><p style=""> 	Build a code from scratch for Yarn Cluster </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Yarn Clusters
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-3-8"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    22:01
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                    <div class="title">
+                                        
+                                            Bonus Video - Yarn on Eclipse
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    11:18
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-4">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-4 ">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Spark Applications</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-4 ">
+                            3 Lectures
+                        </span>
+                        <span class="section-header-length">
+                            01:01:48
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-4 ">
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-4-10"><p style=""> 	A review of different types of Spark Applications </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Different types of Spark Applications
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-4-10"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    19:38
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-4-11"><p style=""> 	Learn to use the Java Build tool Gradle with Apache Spark </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Spark with Gradle
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-4-11"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    22:24
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-4-12"><p style=""> 	Introduction to various Spark Applications </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Spark Applications - SQL Library
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-4-12"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    19:46
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-5">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-5 ">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Apache Spark APIs</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-5 ">
+                            3 Lectures
+                        </span>
+                        <span class="section-header-length">
+                            53:16
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-5 ">
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-5-13"><p style=""> 	Introduction to Spark Streaming Architecture </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Spark Streaming Applications
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-5-13"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    17:44
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-5-14"><p style=""> 	Learn to use high level streaming application </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Twitter Stream Application
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-5-14"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    19:05
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <hr>
+                        
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-5-15"><p style=""> 	Learn the application of Lambda architecture </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Lambda Architecture
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-5-15"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    16:27
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+            <div class="content-container">
+                <div class="section-container" data-toggle="collapse" data-target=".lecture-475806-6">
+                    <div class="section-header-left">
+                        <span class="lecture-title">
+                            <div class="lecture-title-toggle-wrapper">
+                                <span class="lecture-title-toggle js-curriculum-collapse collapse lecture-475806-6 ">
+                                    <span class="lecture-title-toggle-plus">+</span>
+                                    <span class="lecture-title-toggle-minus">–</span>
+                                </span>
+                            </div>
+                            <span class="lecture-title-text">Course Summary</span>
+                        </span>
+                    </div>
+                    <div class="section-header-right">
+                        <span class="num-sections js-curriculum-collapse collapse lecture-475806-6 ">
+                            1 Lecture
+                        </span>
+                        <span class="section-header-length">
+                            03:30
+                        </span>
+                    </div>
+                </div>
+                <div class="lectures-container collapse js-curriculum-collapse lecture-475806-6 ">
+                    
+                        <div class="lecture-container ">
+                            <div class="left-content">
+                                <span class="udi udi-play-circle"></span>
+                                <div class="top">
+                                    
+                                        <div class="description collapse description-475806-6-16"><p style=""> 	Course Summary </p></div>
+                                    
+                                    <div class="title">
+                                        
+                                            Summary
+                                        
+                                        
+                                            <i class="udi udi-caret-down down-arrow"
+                                               data-toggle="collapse"
+                                               data-target=".description-475806-6-16"></i>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                
+                                <span class="content-summary">
+                                    03:30
+                                </span>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+        
+        
+    </div>
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+
+    <div id="instructor">
+        
+    <div class="instructor__heading">
+        About the Instructor
+    </div>
+
+
+        
+            <div id="instructor-598757"
+                 class="instructor__item"
+                 data-purpose="instructor-profile"
+                 user-tracker
+                 >
+                <div class="instructor__body usertracker-command" data-usertracker-type="seen-instructor-bio-alternate">
+                    
+    <div class="instructor__left">
+        
+
+<a class="instructor__instructor-image-container js-discover-tracker-elm ud-discover-tracker"
+   href="/user/eduonix/"
+   data-action="instructor-name-clicked"
+   data-course-id="BUQeeV5U"
+   data-user-id=""
+   data-target-selector-class="js-discover-tracker-elm">
+    <img class="instructor__instructor-image" src="https://udemy-images.udemy.com/user/200_H/598757_b22a_2.jpg" data-purpose="instructor-avatar"/>
+</a>
+
+        
+
+
+<table class="instructor__stats">
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-star"></i></td>
+        <td>
+            <span class="instructor__stat">
+                4.3
+            </span>
+            Average rating
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-comment"></i></td>
+        <td>
+            
+                <span class="instructor__stat">35,269</span> Reviews
+            
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-user"></i></td>
+        <td>
+            
+                <span class="instructor__stat">676,055</span> Students
+            
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-play-circle"></i></td>
+        <td>
+            
+                <span class="instructor__stat">160</span> Courses
+            
+        </td>
+    </tr>
+</table>
+
+    </div>
+    <div class="instructor__right">
+        
+
+<div class="instructor__titles ud-discover-tracker"
+     data-action="instructor-name-clicked"
+     data-course-id="BUQeeV5U"
+     data-user-id=""
+     data-target-selector-class="js-discover-tracker-elm">
+    <div class="instructor__title js-discover-tracker-elm">
+        <a href="/user/eduonix/">
+            Eduonix Learning Solutions
+        </a>
+    </div>
+    
+        <div class="instructor__job-title">
+            1+ Million Students Worldwide | 200+ Courses
+        </div>
+    
+</div>
+
+        
+
+
+<div class="instructor__description ud-discover-tracker"
+     data-action="full-instructor-biography-read"
+     data-course-id="BUQeeV5U"
+     data-user-id=""
+     data-target-selector-class="js-simple-collapse-more-btn">
+    <div class="instructor__expand-description js-simple-collapse"
+         data-more="+ View More">
+        <div class="js-simple-collapse-inner">
+            <p>  	        Eduonix creates and distributes high quality technology training content. Our team of  industry professionals have been training manpower for more than a decade. We aim to teach technology the way it is used in industry and professional world.  We have professional team of trainers for technologies ranging from Mobility, Web to Enterprise and Database and Server Administration.  </p>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+                </div>
+            </div>
+        
+            <div id="instructor-15712140"
+                 class="instructor__item"
+                 data-purpose="instructor-profile"
+                 user-tracker
+                 >
+                <div class="instructor__body usertracker-command" data-usertracker-type="seen-instructor-bio-alternate">
+                    
+    <div class="instructor__left">
+        
+
+<a class="instructor__instructor-image-container js-discover-tracker-elm ud-discover-tracker"
+   href="/user/eduonix-tech/"
+   data-action="instructor-name-clicked"
+   data-course-id="BUQeeV5U"
+   data-user-id=""
+   data-target-selector-class="js-discover-tracker-elm">
+    <img class="instructor__instructor-image" src="https://udemy-images.udemy.com/user/200_H/anonymous.png" data-purpose="instructor-avatar"/>
+</a>
+
+        
+
+
+<table class="instructor__stats">
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-star"></i></td>
+        <td>
+            <span class="instructor__stat">
+                4.3
+            </span>
+            Average rating
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-comment"></i></td>
+        <td>
+            
+                <span class="instructor__stat">33,768</span> Reviews
+            
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-user"></i></td>
+        <td>
+            
+                <span class="instructor__stat">654,942</span> Students
+            
+        </td>
+    </tr>
+    <tr class="instructor__stat-row">
+        <td class="instructor__stat-icon"><i class="udi udi-play-circle"></i></td>
+        <td>
+            
+                <span class="instructor__stat">132</span> Courses
+            
+        </td>
+    </tr>
+</table>
+
+    </div>
+    <div class="instructor__right">
+        
+
+<div class="instructor__titles ud-discover-tracker"
+     data-action="instructor-name-clicked"
+     data-course-id="BUQeeV5U"
+     data-user-id=""
+     data-target-selector-class="js-discover-tracker-elm">
+    <div class="instructor__title js-discover-tracker-elm">
+        <a href="/user/eduonix-tech/">
+            Eduonix-Tech .
+        </a>
+    </div>
+    
+</div>
+
+        
+
+
+<div class="instructor__description ud-discover-tracker"
+     data-action="full-instructor-biography-read"
+     data-course-id="BUQeeV5U"
+     data-user-id=""
+     data-target-selector-class="js-simple-collapse-more-btn">
+    <div class="instructor__expand-description js-simple-collapse"
+         data-more="+ View More">
+        <div class="js-simple-collapse-inner">
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+
+                </div>
+            </div>
+        
+    </div>
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8 left-col">
+                
+
+    <div id="reviews" class="ratings-and-reviews" data-purpose="course-reviews">
+        
+            <course-reviews course-id="475806"
+                            rating-distribution="[{&#39;rating&#39;: 1, &#39;count&#39;: 22}, {&#39;rating&#39;: 2, &#39;count&#39;: 10}, {&#39;rating&#39;: 3, &#39;count&#39;: 27}, {&#39;rating&#39;: 4, &#39;count&#39;: 28}, {&#39;rating&#39;: 5, &#39;count&#39;: 37}]"
+                            average-rating="3.4"
+                            template="base_v2">
+            </course-reviews>
+        
+    </div>
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8">
+                
+
+    
+        <div class="more-from-instructor ud-courseimpressiontracker"
+             data-context="landing-page"
+             data-subcontext="more-from-instructor"
+             data-tracking-type="mark-as-seen"
+             data-purpose="course-related-courses">
+            <div class="more-from-instructor__title">
+                More from Eduonix-Tech .
+            </div>
+
+            <ul class="card-wrapper">
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1107870">
+    <a href="/beginner-to-professional-the-complete-photoshop-guide/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1107870_5218_2.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Beginner To Professional - The Complete Photoshop Guide
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 95%"></span>
+                    </span>
+                    <span> (2)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$45
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/beginner-to-professional-the-complete-photoshop-guide/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1107870"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1088608">
+    <a href="/learn-to-build-apps-using-swift3-and-ios10/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1088608_2a90.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Learn To Build Apps Using Swift3 and iOS10
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 0%"></span>
+                    </span>
+                    <span> (0)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$35
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/learn-to-build-apps-using-swift3-and-ios10/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1088608"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1069214">
+    <a href="/learn-to-build-mobile-apps-with-react-native/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1069214_30f8_5.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Learn to Build Mobile Apps With React Native
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 90%"></span>
+                    </span>
+                    <span> (8)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$45
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/learn-to-build-mobile-apps-with-react-native/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1069214"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+            </ul>
+        </div>
+    
+        <div class="more-from-instructor ud-courseimpressiontracker"
+             data-context="landing-page"
+             data-subcontext="more-from-instructor"
+             data-tracking-type="mark-as-seen"
+             data-purpose="course-related-courses">
+            <div class="more-from-instructor__title">
+                More from Eduonix Learning Solutions
+            </div>
+
+            <ul class="card-wrapper">
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1107870">
+    <a href="/beginner-to-professional-the-complete-photoshop-guide/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1107870_5218_2.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Beginner To Professional - The Complete Photoshop Guide
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 95%"></span>
+                    </span>
+                    <span> (2)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$45
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/beginner-to-professional-the-complete-photoshop-guide/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1107870"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1088608">
+    <a href="/learn-to-build-apps-using-swift3-and-ios10/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1088608_2a90.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Learn To Build Apps Using Swift3 and iOS10
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 0%"></span>
+                    </span>
+                    <span> (0)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$35
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/learn-to-build-apps-using-swift3-and-ios10/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1088608"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+                    
+
+
+
+
+<li class="card" data-courseid="1088344">
+    <a href="/git-and-github-essentials/">
+        <div class="card__image">
+            <img class="img" src="https://udemy-images.udemy.com/course/240x135/1088344_9e6a_3.jpg">
+        </div>
+        <div class="card__details">
+            <strong class="ellipsis-2lines details__name" data-purpose="course-card-title">
+                Git and GitHub Essentials
+            </strong>
+            <div class="ellipsis-2lines details__instructor">
+                Eduonix Learning Solutions,
+                1+ Million Students Worldwide | 200+ Courses
+                
+            </div>
+            <div class="details__bottom">
+                <div class="details__rating">
+                    <span class="star-rating--static star-rating--smaller">
+                        <span style="width: 60%"></span>
+                    </span>
+                    <span> (1)</span>
+                </div>
+                
+                    <div class="details__price">
+                        <div>
+                            
+                                <span class="card__price">
+                                    C$15
+                                </span>
+                                <span class="card__price--old">
+                                    C$35
+                                </span>
+
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </a>
+    <div class="card__options">
+        
+        
+        <div class="wishlist-btn ud-wishlist ud-popup options__wishlist"
+             data-href="/git-and-github-essentials/?xref=wish"
+             data-requirelogin="true"
+             data-signuppopupidentifier="button-wishlist"
+             data-course-id="1088344"
+             data-is-wishlisted="false">
+            <i class="udi udi-heart icon"></i>
+            <div class="tooltip left">
+                <div class="tooltip__arrow tooltip-arrow"></div>
+                <div class="tooltip__inner tooltip-inner in-wishlist">Wishlisted</div>
+                <div class="tooltip__inner tooltip-inner not-in-wishlist">Wishlist</div>
+            </div>
+        </div>
+        
+    </div>
+</li>
+
+                
+            </ul>
+        </div>
+    
+
+
+            </div>
+        </div>
+
+        <div class="row row--component-margin">
+            <div class="col-xs-8">
+                
+
+    
+        <div class="report-abuse">
+            <require-auth show-login="true"
+                          next-url="/feedback/report/?related_object_type=course&amp;related_object_id=475806"
+                          action="openPopup=true"
+                          data-purpose="report-abuse-link">
+                <span class="report-abuse__link">Report Abuse</span>
+                <i class="udi udi-flag report-abuse__icon"></i>
+            </require-auth>
+
+            <popup open="openPopup" href="/feedback/report/?related_object_type=course&amp;related_object_id=475806"></popup>
+        </div>
+    
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+        
+            
+                <div class="ud-angular-loader"
+                     data-module-id="intercom"
+                     data-module-name="ng/apps/intercom/app"></div>
+            
+        
+
+        
+            
+        
+
+        
+            
+
+
+<div class="footer-v42-wrapper ud-react-loader ud-component--footer--app  "
+     data-module-id="apps-footer"
+     data-module-args="{&quot;localeDropdown&quot;:{&quot;items&quot;:[{&quot;id&quot;:&quot;en_US&quot;,&quot;name&quot;:&quot;English&quot;},{&quot;id&quot;:&quot;de_DE&quot;,&quot;name&quot;:&quot;Deutsch&quot;},{&quot;id&quot;:&quot;es_ES&quot;,&quot;name&quot;:&quot;Espa\u00f1ol&quot;},{&quot;id&quot;:&quot;fr_FR&quot;,&quot;name&quot;:&quot;Fran\u00e7ais&quot;},{&quot;id&quot;:&quot;it_IT&quot;,&quot;name&quot;:&quot;Italiano&quot;},{&quot;id&quot;:&quot;ja_JP&quot;,&quot;name&quot;:&quot;\u65e5\u672c\u8a9e&quot;},{&quot;id&quot;:&quot;ko_KR&quot;,&quot;name&quot;:&quot;\ud55c\uad6d\uc5b4&quot;},{&quot;id&quot;:&quot;pt_BR&quot;,&quot;name&quot;:&quot;Portugu\u00eas&quot;},{&quot;id&quot;:&quot;ru_RU&quot;,&quot;name&quot;:&quot;\u0420\u0443\u0441\u0441\u043a\u0438\u0439&quot;},{&quot;id&quot;:&quot;tr_TR&quot;,&quot;name&quot;:&quot;T\u00fcrk\u00e7e&quot;},{&quot;id&quot;:&quot;zh_CN&quot;,&quot;name&quot;:&quot;\u4e2d\u6587(\u7b80\u4f53)&quot;},{&quot;id&quot;:&quot;zh_TW&quot;,&quot;name&quot;:&quot;\u4e2d\u6587(\u7e41\u9ad4)&quot;}],&quot;currentLanguage&quot;:&quot;English&quot;}}"
+     data-purpose="footer-bar">
+    <div class="footer-v42   ">
+        <div class="container">
+        
+            <ul class="fxw fxwrap">
+                
+                    
+                        <li>
+                            <a href="https://about.udemy.com/"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.about">About Us</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="https://business.udemy.com/?ref=footer"
+                               class="ud-click-tracking white-text"
+                               
+                                   data-type="udemy-business-footer-clicked"
+                               
+                               data-purpose="footer.links.business">Udemy for Business</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="https://teach.udemy.com/?ref=teach_footer"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.teach">Become an Instructor</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="/affiliate/"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.affiliates">Affiliates</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="https://about.udemy.com/blog?ref=footer"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.blog">Blog</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="/topics/"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.topics">Topics</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="/mobile/"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.mobile">Mobile Apps</a>
+                        </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li>
+                            <a href="/support/"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.support">Support</a>
+                        </li>
+                    
+                
+                    
+                
+                    
+                        <li>
+                            <a href="https://about.udemy.com/careers"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.careers">Careers</a>
+                        </li>
+                    
+                
+                    
+                        <li>
+                            <a href="https://blog.udemy.com/?ref=footer"
+                               class=" white-text"
+                               
+                               data-purpose="footer.links.resources">Resources</a>
+                        </li>
+                    
+                
+            </ul>
+
+            <ul class="fxw mt10 hidden-xs">
+                <li>
+                    <div class="ud-component--footer--locale-dropdown">
+    
+    <div class="btn-group dropup lang-dropdown">
+        <a class="gray-link dropdown-toggle" href="javascript:void(0)"
+           data-purpose="language-selector-link">
+            <i class="udi udi-globe mr5"></i>
+            English
+            <i class="udi udi-caret-up user-caret ml5"></i>
+        </a>
+    </div>
+</div>
+
+                </li>
+
+                <li>
+                    <span class="gray-text copyright">
+                        Copyright &copy; 2017 Udemy, Inc.
+                    </span>
+                </li>
+
+                <li>
+                    <a href="/terms/" class="gray-text" data-purpose="terms-link">
+                        Terms
+                    </a>
+                </li>
+                <li>
+                    <a href="/terms/privacy/" class="gray-text" data-purpose="privacy-link">
+                        Privacy Policy
+                    </a>
+                </li>
+                <li>
+                    <a href="/terms/copyright/" class="gray-text" data-purpose="copyright-link">
+                        Intellectual Property
+                    </a>
+                </li>
+            </ul>
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+        
+        
+
+<script type="text/javascript" src="/staticx/udemy/js/webpack/entry-manifest.7238e2afc09a8f074cae.js" defer></script>
+<script type="text/javascript" src="/staticx/udemy/js/webpack/entry-vendor.6bfe6b021fd40d062a0c.js" defer></script>
+<script type="text/javascript" src="/staticx/udemy/js/webpack/entry-main.e48a4fa5a99bdafb8d3a.js" defer></script>
+
+    </body>
+</html>
